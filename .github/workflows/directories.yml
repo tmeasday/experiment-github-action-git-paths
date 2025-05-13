@@ -1,0 +1,26 @@
+name: Paths experiments
+
+on:
+  push:
+
+jobs:
+  paths-experiments:
+    runs-on: ubuntu-22.04
+    steps:
+      # - name: Checkout
+      #   uses: actions/checkout@v4
+
+      - run: |
+          cd /tmp
+          mkdir something
+          cd something
+          git init
+          git commit -am "first" --allow-empty
+          mkdir -p one/two/three
+          echo "hi" > one/two/three/four
+          git add -A
+          git commit -am "second"
+          cd one/two
+          echo "git diff output:"
+          git --no-pager diff --name-only HEAD^
+                
