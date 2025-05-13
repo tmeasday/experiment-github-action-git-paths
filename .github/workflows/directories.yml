@@ -11,6 +11,9 @@ jobs:
       #   uses: actions/checkout@v4
 
       - run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+
           cd /tmp
           mkdir something
           cd something
@@ -23,4 +26,4 @@ jobs:
           cd one/two
           echo "git diff output:"
           git --no-pager diff --name-only HEAD^
-                
+
